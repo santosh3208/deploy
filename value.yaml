@@ -1,0 +1,56 @@
+# Default values for Maven projects.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+image:
+  repository: santosh1208/uc3
+  tag: v3
+  pullPolicy: Always
+  imagePullSecrets: regcred
+
+# define environment variables here as a map of key: value
+
+istio:
+  enabled: true
+
+env:
+
+service:
+  name: uc3-svc-devops
+  type: ClusterIP
+  externalPort: 8088
+  internalPort: 8087
+  annotations:
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 400m
+    memory: 512Mi
+probePath:
+  httpGet: /_ping
+  port: 7777
+livenessProbe:
+  initialDelaySeconds: 180
+  periodSeconds: 20
+  successThreshold: 1
+  timeoutSeconds: 1
+readinessProbe:
+  periodSeconds: 20
+  successThreshold: 1
+  timeoutSeconds: 1
+bwce:
+  configmap:
+    enabled: true
+    name: bwce-configmap-uc3
+# if configmap false
+  loglevel: ERROR
+  javaopts: "-Dbw.monitor.batchsize=1 -Dbw.monitor.publishtimer=1500"
+  bwprofile: "Docker"
+  configprofile: "docker"
+  monitoring:
+    enabled: true    
+  opentracing:
+    enabled: true
+    javaopts: "-Dbw.engine.opentracing.enable=true"
