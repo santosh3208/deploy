@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: uc3-svc-devops
+  labels:
+    app: uc3-bwce-devops
+spec:
+  type: LoadBalancer 
+  ports:
+  - port: 8088
+    targetPort: 8087
+  selector:
+    app: uc3-bwce-devops
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uc3-bwce-devops
+spec:
+  replicas: 1
+  selector:
+   matchLabels:
+    app: uc3-bwce-devops
+  template:
+    metadata:
+      name: uc3-bwce-devops
+      labels:
+        app: uc3-bwce-devops
+    spec:
+      containers:
+        - name: uc3-bwce-devops
+          image: santosh1208/
+          imagePullPolicy: Always
+          env:
+
+          - name: CONSUL_SERVER_URL
+            value: "http://consul-consul-ui.kinfra-consul.svc.cluster.local"
+          - name: BW_PROFILE
+            value: "Docker"
+          - name: APP_CONFIG_PROFILE
+            value: "Docker"
+          - name: BW_PROMETHEUS_ENABLE
+            value: "TRUE"
+          - name: BW_JVM_OPTS
+            value: -Dbw.monitor.batchsize=1 -Dbw.monitor.publishtimer=1500
+          - name: BW_APP_MONITORING_CONFIG
+            value: "{\"url\":\"http://monpg.kinfra-monitoring.svc.cluster.local:8080\" }"
+          ports:
+            - containerPort: 8087
