@@ -35,10 +35,7 @@ spec:
 
           - name: CONSUL_SERVER_URL
             value: "http://consul-consul-ui.kinfra-consul.svc.cluster.local"
-          - name: BW_PROFILE
-            value: "Docker"
-          - name: APP_CONFIG_PROFILE
-            value: "Docker"
+          
           - name: BW_PROMETHEUS_ENABLE
             value: "TRUE"
           - name: BW_JVM_OPTS
