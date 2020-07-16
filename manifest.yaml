@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: uc3-bwce-devops
-          image: santosh1208/uc3:v3
+          image: santosh1208/sample:mbcp
           imagePullPolicy: Always
           env:
 
