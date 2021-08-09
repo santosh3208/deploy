@@ -33,14 +33,6 @@ spec:
           imagePullPolicy: Always
           env:
 
-          - name: CONSUL_SERVER_URL
-            value: "http://consul-consul-ui.kinfra-consul.svc.cluster.local"
           
-          - name: BW_PROMETHEUS_ENABLE
-            value: "TRUE"
-          - name: BW_JVM_OPTS
-            value: -Dbw.monitor.batchsize=1 -Dbw.monitor.publishtimer=1500
-          - name: BW_APP_MONITORING_CONFIG
-            value: "{\"url\":\"http://monpg.kinfra-monitoring.svc.cluster.local:8080\" }"
           ports:
             - containerPort: 8087
