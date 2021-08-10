@@ -7,8 +7,8 @@ metadata:
 spec:
   type: LoadBalancer 
   ports:
-  - port: 8088
-    targetPort: 8087
+  - port: 2021
+    targetPort: 2021
   selector:
     app: uc3-bwce-devops
 ---
@@ -29,10 +29,10 @@ spec:
     spec:
       containers:
         - name: uc3-bwce-devops
-          image: santosh1208/sample:mbcp
+          image: santosh1208/pepsico:app
           imagePullPolicy: Always
           env:
 
           
           ports:
-            - containerPort: 8087
+            - containerPort: 2021
