@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: uc3-bwce-devops
-          image: santosh1208/pepsico:app
+          image: santosh1208/pepsico:app1
           imagePullPolicy: Always
           env:
 
