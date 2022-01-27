@@ -1,38 +1,38 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: uc3-svc-devops
+  name: LH-svc-devops
   labels:
-    app: uc3-bwce-devops
+    app: LH-bwce-devops
 spec:
   type: LoadBalancer 
   ports:
-  - port: 2021
-    targetPort: 2021
+  - port: 8085
+    targetPort: 8085
   selector:
-    app: uc3-bwce-devops
+    app: LH-bwce-devops
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: uc3-bwce-devops
+  name: LH-bwce-devops
 spec:
   replicas: 1
   selector:
    matchLabels:
-    app: uc3-bwce-devops
+    app: LH-bwce-devops
   template:
     metadata:
-      name: uc3-bwce-devops
+      name: LH-bwce-devops
       labels:
-        app: uc3-bwce-devops
+        app: LH-bwce-devops
     spec:
       containers:
-        - name: uc3-bwce-devops
-          image: santosh1208/pepsico:app1
+        - name: LH-bwce-devops
+          image: santosh1208/lh:app1
           imagePullPolicy: Always
           env:
 
           
           ports:
-            - containerPort: 2021
+            - containerPort: 8085
