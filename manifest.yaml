@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: lh-bwce-devops
-          image: santosh1208/lh:app1
+          image: santosh1208/lh:app
           imagePullPolicy: Always
           env:
 
