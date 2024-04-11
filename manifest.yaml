@@ -1,38 +1,45 @@
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: lh-svc-devops
+  name: a1-svc-devops
   labels:
-    app: lh-bwce-devops
+    app: a1-bwce-devops
 spec:
   type: LoadBalancer 
   ports:
-  - port: 8085
+  - port: 8080
     targetPort: 8080
   selector:
-    app: lh-bwce-devops
+    app: a1-bwce-devops
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: lh-bwce-devops
+  name: a1-bwce-devops
 spec:
   replicas: 1
   selector:
    matchLabels:
-    app: lh-bwce-devops
+    app: a1-bwce-devops
   template:
     metadata:
-      name: lh-bwce-devops
+      name: a1-bwce-devops
       labels:
-        app: lh-bwce-devops
+        app: a1-bwce-devops
     spec:
       containers:
-        - name: lh-bwce-devops
-          image: santosh1208/bwceapp:helloworld
+        - name: a1-bwce-devops
+          image: santosh1208/app:291app 
+          resources:
+            requests:
+              memory: "4000Mi"
+              cpu: "0.5m"
+            limits:
+              memory: "4000Mi"
+              cpu: "1"
           imagePullPolicy: Always
-          env:
-
-          
           ports:
-            - containerPort: 8085
+            - containerPort: 8080
+      imagePullSecrets:
+        - name: secret-acr
