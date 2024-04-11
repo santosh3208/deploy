@@ -8,7 +8,7 @@ spec:
   type: LoadBalancer 
   ports:
   - port: 8085
-    targetPort: 8085
+    targetPort: 8080
   selector:
     app: lh-bwce-devops
 ---
@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: lh-bwce-devops
-          image: santosh1208/lh:app
+          image: santosh1208/bwceapp:helloworld
           imagePullPolicy: Always
           env:
 
