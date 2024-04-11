@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: a1-bwce-devops
-          image: santosh1208/app:291app 
+          image: santosh1208/bwceapp\:helloworld
           resources:
             requests:
               memory: "4000Mi"
