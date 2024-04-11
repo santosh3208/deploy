@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: santosh1208/uc3
-  tag: v3
+  repository: santosh1208/bwceapp
+  tag: helloworld
   pullPolicy: Always
   imagePullSecrets: regcred
 
@@ -19,7 +19,7 @@ service:
   name: uc3-svc-devops
   type: ClusterIP
   externalPort: 8088
-  internalPort: 8087
+  internalPort: 8080
   annotations:
 resources:
   limits:
